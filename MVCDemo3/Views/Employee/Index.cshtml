@@ -1,0 +1,47 @@
+﻿@model MVCDemo3.Models.EmployeeViewModelList
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EmpployeeView</title>
+</head>
+<body>
+    <div style=" background: url('../../Content/img/kx.jpg') 100% 100% ">
+        <div style="text-align:right"> 欢迎, @Model.UserName &nbsp;&nbsp;<a href="/Authentication/Logout">退出</a></div>
+        
+        <hr />
+        @*<a href="/Employee/AddNew">Add New</a>*@
+        @{
+            Html.RenderAction("GetAddNewView");
+        } 
+        <table cellpadding="2" cellspacing="2" border="1">
+            <thead>
+                <tr>
+                    <td>EmployeeName</td>
+                    <td>Salary</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model.EmployeeList)
+                    {
+                    <tr>
+                        <td>@item.EmployeeName</td>
+                        <td style="background-color:@item.Color">@item.EmployeeSalary</td>
+                    </tr>
+            }
+                }
+            </tbody>
+        </table>
+        @{
+        Html.RenderPartial("Footer", Model.FooterData);
+        }
+    </div>
+</body>
+</html>

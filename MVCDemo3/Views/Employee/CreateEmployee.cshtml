@@ -1,0 +1,33 @@
+﻿@model Models.Employees
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateEmployee</title>
+</head>
+<body>
+    <div>
+        <form action="/Employee/SaveEmployee" method="post">
+
+            First Name: <input type="text" id="TxtFName" name="FirstName " value="" />@Html.ValidationMessageFor(x => x.FirstName,"必填", new { style = "color:red;" })<br />
+            Last Name: <input type="text" id="TxtLName" name="LastName" value="" /><br />
+            Salary: <input type="text" id="TxtSalary" name="Salary" value="" /><br />
+            <input type="submit" name="BtnSub" value="Save Employee" />
+            <input type="button" name="BtnReset" value="Reset" onclick="Reset()" />
+            <input type="submit" name="BtnSub" value="Cancle" />
+        </form>
+    </div>
+    <script>
+        function Reset() {
+            document.getElementById("TxtFName").value = "";
+            document.getElementById("TxtLName").value = "";
+            document.getElementById("TxtSalary").value = "";
+        }
+    </script>
+</body>
+</html>
